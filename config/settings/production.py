@@ -2,19 +2,21 @@ import os
 import dj_database_url
 from .base import *
 
+# 🔒 Segurança
 DEBUG = False
-
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
 
-if not DATABASE_URL:
-    raise Exception("DATABASE_URL não encontrada no Railway")
-
+# 🗄️ Banco de dados (Railway)
 DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL)
+    'default': dj_database_url.parse(os.environ['DATABASE_URL'])
 }
 
+# 🌐 CORS (liberado por enquanto)
 CORS_ALLOW_ALL_ORIGINS = True
+
+# 🔐 Segurança adicional
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
