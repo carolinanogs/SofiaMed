@@ -1,0 +1,1 @@
+web: python manage.py migrate --settings=config.settings.production && gunicorn config.wsgi --env DJANGO_SETTINGS_MODULE=config.settings.production
