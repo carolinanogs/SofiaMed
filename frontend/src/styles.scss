@@ -1,0 +1,72 @@
+/* ─── Google Fonts importadas no index.html ─── */
+
+/* ─── CSS Custom Properties (Design Tokens) ─── */
+:root {
+  --bg:          #0d0718;
+  --surface:     #160d2a;
+  --surface2:    #1e1136;
+  --card:        #1a0f2e;
+  --card2:       #231540;
+  --accent:      #e91e8c;
+  --accent2:     #b5147a;
+  --accent-soft: rgba(233, 30, 140, 0.12);
+  --accent-glow: rgba(233, 30, 140, 0.3);
+  --lavender:    #c084fc;
+  --lavender-soft: rgba(192, 132, 252, 0.15);
+  --green:       #4ade80;
+  --green-soft:  rgba(74, 222, 128, 0.12);
+  --text:        #f0e8ff;
+  --text2:       #a89bc2;
+  --text3:       #6b5e85;
+  --border:      rgba(192, 132, 252, 0.15);
+  --radius:      20px;
+  --radius-sm:   12px;
+  --shadow:      0 8px 32px rgba(0, 0, 0, 0.4);
+  --font-display: 'DM Serif Display', serif;
+  --font-body:   'DM Sans', sans-serif;
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+/* ─── Desktop centering ─── */
+body {
+  display: flex;
+  justify-content: center;
+  background: #080410;
+}
+
+/* ─── Scrollbar global ─── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface2) transparent;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+/* ─── Router outlet — evitar flash ─── */
+router-outlet + * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Utility: tap highlight off em mobile ─── */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}

@@ -1,0 +1,43 @@
+<div class="page-wrapper">
+  <header class="header">
+    <div class="header-row">
+      <div>
+        <div class="logo">Remédios</div>
+        <div class="header-sub">Gerenciar cadastros</div>
+      </div>
+      <button class="btn-icon" (click)="openAdd()">+</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <div *ngIf="loading">
+      <div class="skeleton-item" *ngFor="let i of [1,2,3]"></div>
+    </div>
+
+    <ng-container *ngIf="!loading">
+      <app-medication-card
+        *ngFor="let med of medications"
+        [medication]="med"
+        [showActions]="true"
+        (editClicked)="onEdit($event)"
+        (deleteClicked)="onDelete($event)">
+      </app-medication-card>
+
+      <div class="empty-state" *ngIf="medications.length === 0">
+        <div class="empty-icon">💊</div>
+        <div class="empty-title">Nenhum remédio</div>
+        <p class="empty-text">Adicione seu primeiro remédio.</p>
+      </div>
+    </ng-container>
+  </main>
+
+  <button class="fab" (click)="openAdd()">+</button>
+  <app-bottom-nav></app-bottom-nav>
+</div>
+
+<app-medication-form
+  [isOpen]="showForm"
+  [medication]="editingMedication"
+  (saved)="onSaved($event)"
+  (cancelled)="onCancelled()">
+</app-medication-form>

@@ -1,0 +1,3 @@
+<div class="toast" [class.show]="toastService.toast().visible" [class]="'toast toast--' + toastService.toast().type">
+  {{ toastService.toast().message }}
+</div>
