@@ -4,7 +4,8 @@ djangorestframework==3.15.1
 django-cors-headers==4.3.1
 
 # Database
-psycopg2[binary]
+psycopg[binary]
+dj-database-url
 
 # Production (opcional)
 gunicorn==22.0.0
